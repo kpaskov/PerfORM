@@ -4,6 +4,7 @@ Created on Jul 24, 2013
 @author: kpaskov
 '''
 from model_perf_schema import Base, EqualityByIDMixin
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, CLOB
 
@@ -16,6 +17,10 @@ class BioentInteractionOverview(Base, EqualityByIDMixin):
     def __init__(self, bioent_id, json):
         self.bioent_id = bioent_id
         self.json = json
+        
+    @hybrid_property
+    def id(self):
+        return self.bioent_id
             
     def unique_key(self):
         return self.bioent_id
@@ -29,6 +34,10 @@ class BioentInteractionEvidence(Base, EqualityByIDMixin):
     def __init__(self, bioent_id, json):
         self.bioent_id = bioent_id
         self.json = json
+        
+    @hybrid_property
+    def id(self):
+        return self.bioent_id
             
     def unique_key(self):
         return self.bioent_id
@@ -42,6 +51,10 @@ class BioentInteractionGraph(Base, EqualityByIDMixin):
     def __init__(self, bioent_id, json):
         self.bioent_id = bioent_id
         self.json = json
+        
+    @hybrid_property
+    def id(self):
+        return self.bioent_id
             
     def unique_key(self):
         return self.bioent_id
@@ -55,6 +68,10 @@ class BioentInteractionEvidenceResource(Base, EqualityByIDMixin):
     def __init__(self, bioent_id, json):
         self.bioent_id = bioent_id
         self.json = json
+        
+    @hybrid_property
+    def id(self):
+        return self.bioent_id
             
     def unique_key(self):
         return self.bioent_id
