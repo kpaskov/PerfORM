@@ -1,3 +1,11 @@
 *.class
 *.pyc
 *.pyo
+model_perf_schema/config.py
+bin
+develop-eggs
+eggs
+eggs
+parts
+perf_orm.egg-info
+src
