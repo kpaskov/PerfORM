@@ -25,20 +25,3 @@ class Reference(Base, EqualityByIDMixin):
             
     def unique_key(self):
         return self.format_name
-    
-class ReferenceBib(Base, EqualityByIDMixin):
-    __tablename__ = 'reference_bib'
-    
-    id = Column('reference_id', Integer, primary_key=True)
-    json = Column('json', CLOB)
-            
-    def __init__(self, reference_id, json):
-        self.id = reference_id
-        self.json = json
-        
-    @hybrid_property
-    def format_name(self):
-        return json_loader.loads(self.json)['format_name']
-            
-    def unique_key(self):
-        return self.format_name

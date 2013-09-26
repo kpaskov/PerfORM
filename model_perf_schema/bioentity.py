@@ -10,9 +10,9 @@ from sqlalchemy.types import Integer, CLOB
 import json as json_loader
 
 class Bioentity(Base, EqualityByIDMixin):
-    __tablename__ = 'bioent'
+    __tablename__ = 'bioentity'
     
-    id = Column('bioent_id', Integer, primary_key=True)
+    id = Column('bioentity_id', Integer, primary_key=True)
     json = Column('json', CLOB)
             
     def __init__(self, bioent_id, json):
@@ -24,8 +24,8 @@ class Bioentity(Base, EqualityByIDMixin):
         return json_loader.loads(self.json)['format_name']
         
     @hybrid_property
-    def bioent_type(self):
+    def class_type(self):
         return json_loader.loads(self.json)['bioent_type']
             
     def unique_key(self):
-        return (self.format_name, self.bioent_type)
+        return (self.format_name, self.class_type)

@@ -1,15 +1,16 @@
 '''
-Created on Jul 24, 2013
+Created on Sep 25, 2013
 
 @author: kpaskov
 '''
+
 from model_perf_schema import Base, EqualityByIDMixin
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, CLOB
 
-class GoReferences(Base, EqualityByIDMixin):
-    __tablename__ = 'go_references'
+class BindingSiteDetails(Base, EqualityByIDMixin):
+    __tablename__ = 'binding_site_details'
     
     bioentity_id = Column('bioentity_id', Integer, primary_key=True)
     json = Column('json', CLOB)

@@ -11,16 +11,16 @@ from sqlalchemy.types import Integer, CLOB
 class PhenotypeReferences(Base, EqualityByIDMixin):
     __tablename__ = 'phenotype_references'
     
-    bioent_id = Column('bioent_id', Integer, primary_key=True)
+    bioentity_id = Column('bioentity_id', Integer, primary_key=True)
     json = Column('json', CLOB)
             
-    def __init__(self, bioent_id, json):
-        self.bioent_id = bioent_id
+    def __init__(self, bioentity_id, json):
+        self.bioentity_id = bioentity_id
         self.json = json
         
     @hybrid_property
     def id(self):
-        return self.bioent_id
+        return self.bioentity_id
             
     def unique_key(self):
-        return self.bioent_id
+        return self.bioentity_id
