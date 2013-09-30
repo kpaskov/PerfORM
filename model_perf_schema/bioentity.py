@@ -12,12 +12,14 @@ class Bioentity(Base, EqualityByIDMixin):
     
     id = Column('bioentity_id', Integer, primary_key=True)
     format_name = Column('format_name', String)
+    display_name = Column('display_name', String)
     class_type = Column('class', String)
     json = Column('json', String)
             
-    def __init__(self, bioent_id, format_name, class_type, json):
+    def __init__(self, bioent_id, format_name, display_name, class_type, json):
         self.id = bioent_id
         self.format_name = format_name
+        self.display_name = display_name
         self.class_type = class_type
         self.json = json
 
