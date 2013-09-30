@@ -25,3 +25,13 @@ class Reference(Base, EqualityByIDMixin):
             
     def unique_key(self):
         return self.format_name
+    
+class Bibentry(Base, EqualityByIDMixin):
+    __tablename__ = 'reference_bibentry'
+    
+    id = Column('reference_id', Integer, primary_key=True)
+    json = Column('json', String)
+            
+    def __init__(self, reference_id, json):
+        self.id = reference_id
+        self.json = json
