@@ -4,10 +4,8 @@ Created on Jul 24, 2013
 @author: kpaskov
 '''
 from model_perf_schema import Base, EqualityByIDMixin
-from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, String, CLOB
-import json as json_loader
 
 class Reference(Base, EqualityByIDMixin):
     __tablename__ = 'reference'
@@ -19,12 +17,8 @@ class Reference(Base, EqualityByIDMixin):
         self.id = reference_id
         self.json = json
         
-    @hybrid_property
-    def format_name(self):
-        return json_loader.loads(self.json)['format_name']
-            
     def unique_key(self):
-        return self.format_name
+        return self.id
     
 class Bibentry(Base, EqualityByIDMixin):
     __tablename__ = 'reference_bibentry'
